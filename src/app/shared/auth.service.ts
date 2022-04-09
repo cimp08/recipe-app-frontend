@@ -31,6 +31,7 @@ export class AuthService {
       .post<any>(`${this.endpoint}/login`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
+        localStorage.setItem('user_id', res.user.id);
         this.getUserProfile(res.user.id).subscribe((res) => {
           this.currentUser = res;
           this.router.navigate(['user-profile/' + res.user.id]);
@@ -42,6 +43,10 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  getUserId() {
+    return localStorage.getItem('user_id');
+  }
+
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
     return authToken !== null ? true : false;
@@ -50,6 +55,10 @@ export class AuthService {
   doLogout() {
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
+      this.router.navigate(['log-in']);
+    }
+    let removeUserId = localStorage.removeItem('user_id');
+    if (removeUserId == null) {
       this.router.navigate(['log-in']);
     }
   }
