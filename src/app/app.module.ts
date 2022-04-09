@@ -9,6 +9,9 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './components/recipe/index/index.component';
+import { RecipedetailComponent } from './components/recipe/recipedetail/recipedetail.component';
+import { ListModule } from './components/list/list.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
+    IndexComponent,
+    RecipedetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    ListModule,
   ],
   providers: [
     {
