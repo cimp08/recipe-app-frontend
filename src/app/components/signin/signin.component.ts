@@ -23,6 +23,6 @@ export class SigninComponent implements OnInit {
   loginUser() {
     this.authService.signIn(this.signinForm.value);
     this.signinForm.reset();
-    /* this.router.navigate(['sign-up']); */
+    this.router.navigate(['/']);
   }
 }
