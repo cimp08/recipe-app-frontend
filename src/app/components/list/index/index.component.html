@@ -1,0 +1,68 @@
+<div class="container my-5">
+  <h1 class="mb-5">My Lists</h1>
+
+  <a routerLink="/list/create/" class="btn btn-dark mb-5">Create New List</a>
+
+  <ng-container *ngIf="lists.length > 0">
+    <ng-container *ngFor="let list of lists">
+      <h4>{{ list.title }}</h4>
+      <div class="mb-4">
+        <a [routerLink]="['/list/', list.id, 'view']" class="btn btn-info me-2"
+          >View Content</a
+        >
+        <a
+          [routerLink]="['/list/', list.id, 'edit']"
+          class="btn btn-success me-2"
+          >Edit</a
+        >
+        <button
+          type="button"
+          (click)="deleteList(list.id)"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </div>
+      <!-- <ng-container *ngIf="list.recipes > 0"> -->
+      <ng-container *ngFor="let recipe of list.recipes">
+        <p>{{ recipe.label }}</p>
+      </ng-container>
+      <!--  </ng-container> -->
+    </ng-container>
+  </ng-container>
+
+  <!-- <table class="table table-bordered">
+    <tr>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>Title</th>
+      <th width="220px">Action</th>
+    </tr>
+    <tr *ngFor="let list of lists">
+      <td>{{ list.id }}</td>
+      <td>{{ list.user_id }}</td>
+      <td>{{ list.title }}</td>
+      <td>
+        <a
+          href="#"
+          [routerLink]="['/list/', list.id, 'view']"
+          class="btn btn-info"
+          >View</a
+        >
+        <a
+          href="#"
+          [routerLink]="['/list/', list.id, 'edit']"
+          class="btn btn-info"
+          >Edit</a
+        >
+        <button
+          type="button"
+          (click)="deleteList(list.id)"
+          class="btn btn-info"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table> -->
+</div>

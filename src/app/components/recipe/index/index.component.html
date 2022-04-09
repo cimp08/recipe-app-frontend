@@ -1,0 +1,65 @@
+<!-- SEARCH FORM -->
+
+<div class="container my-5">
+  <form [formGroup]="searchForm" (ngSubmit)="searchRecipies(searchForm)">
+    <div class="form-group">
+      <label>Search:</label>
+      <input
+        class="form-control"
+        formControlName="result"
+        placeholder="Search Recipies"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="health">Health:</label>
+      <select formControlName="health" class="form-control" id="health">
+        <option selected value="">All</option>
+        <option value="dairy-free">Dairy-free</option>
+        <option value="gluten-free">Gluten-free</option>
+        <option value="vegan">Vegan</option>
+        <option value="vegetarian">Vegetarian</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="dishType">Dish type:</label>
+      <select formControlName="dishType" class="form-control" id="dishtype">
+        <option selected value="">All</option>
+        <option value="Starter">Starter</option>
+        <option value="Main%20course">Main course</option>
+        <option value="Desserts">Desserts</option>
+      </select>
+    </div>
+
+    <button
+      [disabled]="!searchForm.value.result"
+      type="submit"
+      class="btn btn-dark mt-3"
+    >
+      Search
+    </button>
+  </form>
+</div>
+
+<!-- SEARCH RESULTS -->
+
+<div class="container">
+  <section>
+    <div *ngFor="let item of recipes" class="card">
+      <div class="card__body">
+        <img
+          src="{{ item.images.REGULAR.url }}"
+          alt="{{ item.label }}"
+          class="card__image"
+        />
+        <h4 class="card__title">{{ item.label }}</h4>
+      </div>
+      <button
+        class="card__btn"
+        [routerLink]="['/recipedetail', item.uri | slice: 44]"
+      >
+        View Recipe
+      </button>
+    </div>
+  </section>
+</div>

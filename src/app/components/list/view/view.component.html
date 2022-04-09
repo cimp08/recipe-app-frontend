@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>{{ list.title }}</h1>
+
+  <a href="#" routerLink="/list/index" class="btn btn-primary">Back</a>
+
+  <!--   <div>
+    <strong>ID:</strong>
+    <p>{{ list.id }}</p>
+  </div>
+
+  <div>
+    <strong>User ID:</strong>
+    <p>{{ list.user_id }}</p>
+  </div>
+
+  <div>
+    <strong>Body:</strong>
+    <p>{{ list.title }}</p>
+  </div>
+</div> -->
+
+  <!-- SAVED RECIPIES -->
+
+  <div class="container">
+    <section>
+      <div *ngFor="let recipe of recipies" class="card">
+        <div class="card__body">
+          <img
+            src="{{ recipe.photo_url }}"
+            alt="{{ recipe.label }}"
+            class="card__image"
+          />
+          <h4 class="card__title">{{ recipe.label }}</h4>
+        </div>
+        <button
+          class="card__btn"
+          [routerLink]="['/recipedetail', recipe.recipe_api_id]"
+        >
+          View Recipe
+        </button>
+      </div>
+    </section>
+  </div>
+</div>

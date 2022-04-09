@@ -1,0 +1,90 @@
+<div
+  class="fade__in"
+  style="
+    background-image: linear-gradient(
+        to right,
+        rgb(0, 0, 0),
+        rgba(2, 2, 2, 0.7)
+      ),
+      url('{{ recipe.image }}');
+    background-size: cover;
+  "
+>
+  <div class="container" style="min-height: 300px">
+    <div class="row py-3">
+      <div
+        class="col d-flex flex-column text-white justify-content-center pt-2 pt-lg-0"
+      >
+        <h2 class="font-weight-bold mt-4">
+          {{ recipe.label }}
+        </h2>
+        <ul class="list-inline">
+          <ng-container *ngFor="let item of recipe.cuisineType">
+            <li class="list-inline-item text-muted">
+              {{ item | titlecase }}
+            </li>
+          </ng-container>
+          <ng-container *ngFor="let item of recipe.dishType">
+            <li class="list-inline-item text-muted">
+              {{ item | titlecase }}
+            </li>
+          </ng-container>
+          <ng-container *ngFor="let item of recipe.mealType">
+            <li class="list-inline-item text-muted">
+              {{ item | titlecase }}
+            </li>
+          </ng-container>
+        </ul>
+        <h6 class="font-weight-bold pt-3">
+          See full recipe on:
+          <a class="link-light" href="{{ recipe.url }}" target="_blank">{{
+            recipe.source
+          }}</a>
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-4">
+  <h6
+    class="text-dark pt-4"
+    style="
+      width: 100%;
+      border-bottom: 1px solid rgb(214, 214, 214);
+      line-height: 0.1em;
+      margin: 10px 0px 30px;
+    "
+  >
+    <span style="background: rgb(255, 255, 255); padding-right: 14px"
+      >Ingredients</span
+    >
+  </h6>
+
+  <div class="row detail__container mt-4">
+    <div class="col-lg-4 mb-3">
+      <div class="fade__in">
+        <img
+          src="{{ recipe.image }}"
+          class="img-fluid rounded"
+          alt="{{ recipe.label }}"
+        />
+      </div>
+    </div>
+    <div class="col d-flex flex-column text-muted">
+      <h4>{{ recipe.label }}</h4>
+      <div class="d-flex flex-wrap mt-1 mb-3">
+        <span class="mr-auto badge badge-pill bg-success p-2 rating"
+          >Calories: {{ recipe.calories | number: "0.1-1" }}</span
+        >
+        <span class="mr-auto badge badge-pill bg-warning p-2 rating ms-2"
+          >Ingredients: {{ recipe.ingredients.length }}</span
+        >
+      </div>
+      <h5 class="mt-2">Ingredients:</h5>
+      <div class="mb-1" *ngFor="let ingredients of recipe.ingredientLines">
+        <span class="item__text pt-3">- {{ ingredients }}.</span>
+      </div>
+    </div>
+  </div>
+</div>
