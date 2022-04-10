@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CreateComponent implements OnInit {
   form!: FormGroup;
-  userId!: number;
 
   /*------------------------------------------
   --------------------------------------------
@@ -31,12 +30,8 @@ export class CreateComponent implements OnInit {
    */
   ngOnInit(): void {
     this.form = new FormGroup({
-      user_id: new FormControl('', [Validators.required]),
+      user_id: new FormControl(localStorage.getItem('user_id')),
       title: new FormControl('', Validators.required),
-    });
-
-    this.http.get('http://localhost:8000/api/user').subscribe((user: any) => {
-      this.userId = user.id;
     });
   }
 
