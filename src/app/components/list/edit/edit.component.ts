@@ -37,7 +37,7 @@ export class EditComponent implements OnInit {
     });
 
     this.form = new FormGroup({
-      user_id: new FormControl('', [Validators.required]),
+      user_id: new FormControl(localStorage.getItem('user_id')),
       title: new FormControl('', Validators.required),
     });
   }
