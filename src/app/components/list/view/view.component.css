@@ -14,7 +14,6 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: pointer;
   transition: transform 200ms ease-in;
 }
 
@@ -25,6 +24,10 @@ section {
 }
 
 .card__title {
+  padding: 1rem;
+}
+
+.delete__recipe {
   padding: 1rem;
 }
 
