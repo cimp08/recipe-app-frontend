@@ -33,6 +33,22 @@ export class ListService {
       .pipe(catchError(this.errorHandler));
   }
 
+  deleteRecipe(id: number) {
+    return this.httpClient
+      .delete<Recipe>(this.apiURL + '/recipies/' + id, this.httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  saveRecipe(recipe: any): Observable<Recipe> {
+    return this.httpClient
+      .post<Recipe>(
+        this.apiURL + '/recipies/',
+        JSON.stringify(recipe),
+        this.httpOptions
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
   create(list: any): Observable<List> {
     return this.httpClient
       .post<List>(
