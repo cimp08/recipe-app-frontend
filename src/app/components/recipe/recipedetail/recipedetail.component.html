@@ -6,7 +6,7 @@
         rgb(0, 0, 0),
         rgba(2, 2, 2, 0.7)
       ),
-      url('{{ recipe.image }}');
+      url('{{ recipe?.image }}');
     background-size: cover;
   "
 >
@@ -16,31 +16,67 @@
         class="col d-flex flex-column text-white justify-content-center pt-2 pt-lg-0"
       >
         <h2 class="font-weight-bold mt-4">
-          {{ recipe.label }}
+          {{ recipe?.label }}
         </h2>
         <ul class="list-inline">
-          <ng-container *ngFor="let item of recipe.cuisineType">
+          <ng-container *ngFor="let item of recipe?.cuisineType">
             <li class="list-inline-item text-muted">
               {{ item | titlecase }}
             </li>
           </ng-container>
-          <ng-container *ngFor="let item of recipe.dishType">
+          <ng-container *ngFor="let item of recipe?.dishType">
             <li class="list-inline-item text-muted">
               {{ item | titlecase }}
             </li>
           </ng-container>
-          <ng-container *ngFor="let item of recipe.mealType">
+          <ng-container *ngFor="let item of recipe?.mealType">
             <li class="list-inline-item text-muted">
               {{ item | titlecase }}
             </li>
           </ng-container>
         </ul>
-        <h6 class="font-weight-bold pt-3">
+        <h6 class="font-weight-bold pt-3 mb-4">
           See full recipe on:
-          <a class="link-light" href="{{ recipe.url }}" target="_blank">{{
-            recipe.source
+          <a class="link-light" href="{{ recipe?.url }}" target="_blank">{{
+            recipe?.source
           }}</a>
         </h6>
+
+        <!--  LISTS -->
+        <div
+          *ngIf="this.authService.isLoggedIn && lists.length > 0"
+          class="dropdown"
+        >
+          <button
+            class="btn btn-light d-flex align-items-center dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Add to List
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li *ngFor="let list of lists" class="nav-item">
+              <button class="dropdown-item" (click)="addRecipeToList(list.id)">
+                {{ list?.title }}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <a
+          *ngIf="this.authService.isLoggedIn && lists.length == 0"
+          href="#"
+          routerLink="/list"
+          class="text-reset text-decoration-none"
+        >
+          <button class="btn btn-light btn-md d-flex align-items-center">
+            Create New List
+          </button>
+        </a>
       </div>
     </div>
   </div>
@@ -65,24 +101,24 @@
     <div class="col-lg-4 mb-3">
       <div class="fade__in">
         <img
-          src="{{ recipe.image }}"
+          src="{{ recipe?.image }}"
           class="img-fluid rounded"
-          alt="{{ recipe.label }}"
+          alt="{{ recipe?.label }}"
         />
       </div>
     </div>
     <div class="col d-flex flex-column text-muted">
-      <h4>{{ recipe.label }}</h4>
+      <h4>{{ recipe?.label }}</h4>
       <div class="d-flex flex-wrap mt-1 mb-3">
         <span class="mr-auto badge badge-pill bg-success p-2 rating"
-          >Calories: {{ recipe.calories | number: "0.1-1" }}</span
+          >Calories: {{ recipe?.calories | number: "0.1-1" }}</span
         >
         <span class="mr-auto badge badge-pill bg-warning p-2 rating ms-2"
-          >Ingredients: {{ recipe.ingredients.length }}</span
+          >Ingredients: {{ recipe?.ingredients.length }}</span
         >
       </div>
       <h5 class="mt-2">Ingredients:</h5>
-      <div class="mb-1" *ngFor="let ingredients of recipe.ingredientLines">
+      <div class="mb-1" *ngFor="let ingredients of recipe?.ingredientLines">
         <span class="item__text pt-3">- {{ ingredients }}.</span>
       </div>
     </div>
