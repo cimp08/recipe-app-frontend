@@ -3,4 +3,5 @@ export interface Recipe {
   recipe_api_id: string;
   label: string;
   photo_url: string;
+  log_id: number;
 }
