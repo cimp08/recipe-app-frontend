@@ -1,23 +1,19 @@
 <div class="container">
-  <h1>{{ list.title }}</h1>
+  <h4
+    class="text-dark mt-5"
+    style="
+      width: 100%;
+      border-bottom: 1px solid rgb(214, 214, 214);
+      line-height: 0.1em;
+      margin: 10px 0px 30px;
+    "
+  >
+    <span style="background: rgb(255, 255, 255); padding-right: 14px">{{
+      list?.title | titlecase
+    }}</span>
+  </h4>
 
-  <a href="#" routerLink="/list/index" class="btn btn-primary">Back</a>
-
-  <!--   <div>
-    <strong>ID:</strong>
-    <p>{{ list.id }}</p>
-  </div>
-
-  <div>
-    <strong>User ID:</strong>
-    <p>{{ list.user_id }}</p>
-  </div>
-
-  <div>
-    <strong>Body:</strong>
-    <p>{{ list.title }}</p>
-  </div>
-</div> -->
+  <a href="#" routerLink="/list/index" class="btn btn-dark mb-5">Back</a>
 
   <!-- SAVED RECIPIES -->
 
@@ -31,6 +27,13 @@
             class="card__image"
           />
           <h4 class="card__title">{{ recipe.label }}</h4>
+          <a
+            type="button"
+            (click)="deleteRecipe(recipe.id)"
+            class="link-danger delete__recipe"
+          >
+            Delete
+          </a>
         </div>
         <button
           class="card__btn"
