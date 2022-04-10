@@ -1,36 +1,23 @@
 <div class="container">
-  <h1>Update List</h1>
+  <h1 class="my-5">Update List</h1>
 
-  <a href="#" routerLink="/list/index" class="btn btn-primary">Back</a>
+  <a href="#" routerLink="/list/index" class="btn btn-outline-dark mb-5"
+    >Back</a
+  >
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-group">
-      <label for="user_id">User ID:</label>
-      <input
-        formControlName="user_id"
-        id="user_id"
-        type="text"
-        [(ngModel)]="list.user_id"
-        class="form-control"
-      />
-      <div
-        *ngIf="f['user_id'].touched && f['user_id'].invalid"
-        class="alert alert-danger"
-      >
-        <div *ngIf="f['user_id'].errors && f['user_id'].errors['user_id']">
-          User ID is required.
-        </div>
-      </div>
+      <input hidden formControlName="user_id" type="text" />
     </div>
 
     <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="title">List Name:</label>
       <input
         formControlName="title"
         id="title"
         type="text"
         [(ngModel)]="list.title"
-        class="form-control"
+        class="form-control my-2"
       />
       <div
         *ngIf="f['title'].touched && f['title'].invalid"
@@ -42,7 +29,7 @@
       </div>
     </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+    <button class="btn btn-dark" type="submit" [disabled]="!form.valid">
       Update
     </button>
   </form>

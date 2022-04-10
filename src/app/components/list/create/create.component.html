@@ -1,48 +1,36 @@
 <div class="container">
-  <h1>Create New List</h1>
+  <h1 class="my-5">Create New List</h1>
 
-  <a href="#" routerLink="/list/index" class="btn btn-primary">Back</a>
+  <a href="#" routerLink="/list/index" class="btn btn-outline-dark mb-5"
+    >Back</a
+  >
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-group">
-      <label for="user_id">User ID:</label>
-      <input
-        formControlName="user_id"
-        id="user_id"
-        type="text"
-        class="form-control"
-        value="{{ userId }}"
-      />
-      <div
-        *ngIf="f['user_id'].touched && f['user_id'].invalid"
-        class="alert alert-danger"
-      >
-        <div *ngIf="f['user_id'].errors && f['user_id'].errors['required']">
-          User ID is required.
-        </div>
-      </div>
+      <input hidden formControlName="user_id" type="text" />
     </div>
 
     <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="title">List Name:</label>
       <input
         formControlName="title"
+        placeholder="Enter list name"
         id="title"
         type="text"
-        class="form-control"
+        class="form-control my-2"
       />
       <div
         *ngIf="f['title'].touched && f['title'].invalid"
         class="alert alert-danger"
       >
         <div *ngIf="f['title'].errors && f['title'].errors['required']">
-          Title is required.
+          List name is required.
         </div>
       </div>
     </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
-      Submit
+    <button class="btn btn-dark" type="submit" [disabled]="!form.valid">
+      Create
     </button>
   </form>
 </div>
