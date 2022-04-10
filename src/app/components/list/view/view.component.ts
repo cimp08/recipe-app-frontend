@@ -42,4 +42,16 @@ export class ViewComponent implements OnInit {
       console.log(this.recipies);
     });
   }
+
+  /* deleteRecipe(id: number) {
+    this.listService.deleteRecipe(id);
+    console.log('List deleted successfully!');
+  } */
+
+  deleteRecipe(id: number) {
+    this.listService.deleteRecipe(id).subscribe((res) => {
+      this.recipies = this.recipies.filter((item) => item.id !== id);
+      console.log('List deleted successfully!');
+    });
+  }
 }
