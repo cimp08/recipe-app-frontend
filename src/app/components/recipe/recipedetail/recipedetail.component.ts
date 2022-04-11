@@ -37,15 +37,7 @@ export class RecipedetailComponent implements OnInit {
       .getAll(localStorage.getItem('user_id'))
       .subscribe((data: List[]) => {
         this.lists = data;
-        console.log(this.lists);
       });
-
-    /* this.form = new FormGroup({
-      recipe_api_id: new FormControl(''),
-      label: new FormControl(''),
-      photo_url: new FormControl(''),
-      log_id: new FormControl(''),
-    }); */
   }
 
   addRecipeToList(listId: number) {
@@ -59,11 +51,4 @@ export class RecipedetailComponent implements OnInit {
       console.log('Recipe saved successfully!');
     });
   }
-
-  /* submit() {
-    console.log(this.form.value);
-    this.listService.saveRecipe(this.form.value).subscribe((res: any) => {
-      console.log('Recipe saved successfully!');
-    });
-  } */
 }

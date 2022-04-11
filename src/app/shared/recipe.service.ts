@@ -33,15 +33,6 @@ export class RecipeService {
   getRecipe(id: number): Observable<any> {
     return this.httpClient.get(
       `${this.url}/${id}${this.type}&app_id=${this.appId}&app_key=${this.appKey}`
-
-      /* this.url +
-        '/' +
-        id +
-        this.type +
-        '&app_id=' +
-        this.appId +
-        '&app_key=' +
-        this.appKey */
     );
   }
 }

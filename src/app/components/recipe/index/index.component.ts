@@ -22,10 +22,6 @@ export class IndexComponent implements OnInit {
   }
 
   searchRecipies(form: FormGroup) {
-    /* console.log('Name', form.value.result);
-    console.log('Health', form.value.health);
-    console.log('DishType', form.value.dishType); */
-
     this.recipeService
       .getAllRecipies(form.value.result, form.value.health, form.value.dishType)
       .subscribe((data) => {
