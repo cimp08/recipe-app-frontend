@@ -27,10 +27,18 @@ export class RecipedetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    /** spinner starts on init */
+    this.spinner.show();
+
     this.recipeService
       .getRecipe(this.route.snapshot.params['id'])
       .subscribe((data) => {
         this.recipe = data.recipe;
+        setTimeout(() => {
+          /** spinner ends after 1 seconds */
+          this.spinner.hide();
+        }, 1000);
+
         console.log(this.recipe);
         return this.recipe;
       });
@@ -42,14 +50,6 @@ export class RecipedetailComponent implements OnInit {
           this.lists = data;
         });
     }
-
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 2000);
   }
 
   addRecipeToList(listId: number) {

@@ -28,20 +28,19 @@ export class IndexComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
+    /** spinner starts on init */
+    this.spinner.show();
+
     this.listService
       .getAll(localStorage.getItem('user_id'))
       .subscribe((data: List[]) => {
         this.lists = data;
+        setTimeout(() => {
+          /** spinner ends after 0.5 second */
+          this.spinner.hide();
+        }, 500);
         console.log(this.lists);
       });
-
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 1000);
   }
 
   /**
