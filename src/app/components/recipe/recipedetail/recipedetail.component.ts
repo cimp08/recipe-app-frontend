@@ -33,11 +33,13 @@ export class RecipedetailComponent implements OnInit {
         return this.recipe;
       });
 
-    this.listService
-      .getAll(localStorage.getItem('user_id'))
-      .subscribe((data: List[]) => {
-        this.lists = data;
-      });
+    if (this.authService.isLoggedIn) {
+      this.listService
+        .getAll(localStorage.getItem('user_id'))
+        .subscribe((data: List[]) => {
+          this.lists = data;
+        });
+    }
   }
 
   addRecipeToList(listId: number) {
