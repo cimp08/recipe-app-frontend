@@ -68,7 +68,7 @@
         </div>
 
         <a
-          *ngIf="this.authService.isLoggedIn && lists.length == 0"
+          *ngIf="this.authService.isLoggedIn && lists.length == null"
           href="#"
           routerLink="/list"
           class="text-reset text-decoration-none"
