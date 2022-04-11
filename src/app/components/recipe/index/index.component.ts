@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { RecipeService } from 'src/app/shared/recipe.service';
 
 @Component({
@@ -11,7 +12,11 @@ export class IndexComponent implements OnInit {
   searchForm!: FormGroup;
   recipes!: any[];
 
-  constructor(private recipeService: RecipeService, private fb: FormBuilder) {}
+  constructor(
+    private spinner: NgxSpinnerService,
+    private recipeService: RecipeService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.searchForm = this.fb.group({

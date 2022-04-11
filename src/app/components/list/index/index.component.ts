@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListService } from 'src/app/shared/list.service';
 import { List } from 'src/app/shared/list';
 import { AuthService } from 'src/app/shared/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-index',
@@ -16,7 +17,10 @@ export class IndexComponent implements OnInit {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(public listService: ListService) {}
+  constructor(
+    public listService: ListService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   /**
    * Write code on Method
@@ -30,6 +34,14 @@ export class IndexComponent implements OnInit {
         this.lists = data;
         console.log(this.lists);
       });
+
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 1000);
   }
 
   /**

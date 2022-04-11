@@ -6,6 +6,7 @@ import { List } from 'src/app/shared/list';
 import { Recipe } from 'src/app/shared/recipe';
 import { ListService } from 'src/app/shared/list.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-recipedetail',
@@ -21,7 +22,8 @@ export class RecipedetailComponent implements OnInit {
     private recipeService: RecipeService,
     private route: ActivatedRoute,
     public authService: AuthService,
-    public listService: ListService
+    public listService: ListService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +42,14 @@ export class RecipedetailComponent implements OnInit {
           this.lists = data;
         });
     }
+
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 2000);
   }
 
   addRecipeToList(listId: number) {
