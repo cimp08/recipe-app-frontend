@@ -11,7 +11,8 @@ import { Recipe } from './recipe';
   providedIn: 'root',
 })
 export class ListService {
-  private apiURL = 'http://localhost:8000/api';
+  /* private apiURL = 'http://localhost:8000/api'; */
+  private apiURL = 'https://recipesite-app.herokuapp.com/api';
 
   httpOptions = {
     headers: new HttpHeaders({
