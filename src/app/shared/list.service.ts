@@ -43,7 +43,7 @@ export class ListService {
   saveRecipe(recipe: any): Observable<Recipe> {
     return this.httpClient
       .post<Recipe>(
-        this.apiURL + '/recipies/',
+        this.apiURL + '/recipies',
         JSON.stringify(recipe),
         this.httpOptions
       )
@@ -53,7 +53,7 @@ export class ListService {
   create(list: any): Observable<List> {
     return this.httpClient
       .post<List>(
-        this.apiURL + '/lists/',
+        this.apiURL + '/lists',
         JSON.stringify(list),
         this.httpOptions
       )
