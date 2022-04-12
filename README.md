@@ -12,8 +12,9 @@ The site is deployed on Netlify: [recipesite-app.netlify.app](https://recipesite
 
 Clone repo and run:
 
-$ npm install
-$ ng serve
+- npm install
+- ng serve
+- Appkey in environment.prod.ts needs a value to work. Get yours from spoonacular.
 
 ## API
 
