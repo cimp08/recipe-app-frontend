@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  /* endpoint: string = 'http://localhost:8000/api'; */
-  endpoint: string = 'https://recipesite-app.herokuapp.com/api';
+  endpoint: string = 'http://localhost:8000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
 
